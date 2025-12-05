@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - [你的名字拼音]</title>
+    <!-- 引入简单的图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- 全局设置 --- */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        a { text-decoration: none; color: #0066cc; transition: 0.3s; }
+        a:hover { color: #004488; text-decoration: underline; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            min-height: 100vh;
+        }
+
+        /* --- 1. 个人简介区 (Hero) --- */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .profile-img img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%; /* 圆形头像 */
+            border: 3px solid #eee; /* 简单的灰色边框，无呼吸灯 */
+        }
+        .profile-info h1 { margin: 0 0 10px 0; font-size: 2.5em; color: #222; }
+        .role { font-size: 1.2em; color: #555; margin-bottom: 10px; }
+        .advisor { color: #666; margin-bottom: 15px; }
+        .tags span {
+            background: #eef4fa;
+            color: #0066cc;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-right: 8px;
+        }
+        .social-links { margin-top: 15px; }
+        .social-links a {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: #555;
+        }
+        .social-links a:hover { color: #0066cc; }
+
+        /* --- 通用标题样式 --- */
+        h2 {
+            border-left: 5px solid #0066cc;
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        /* --- 2. 新闻 (News) --- */
+        .news-list li { margin-bottom: 8px; }
+        .date { font-family: monospace; font-weight: bold; color: #0066cc; margin-right: 10px; }
+
+        /* --- 3. 教育背景 (Education) --- */
+        .edu-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .edu-year {
+            width: 120px;
+            font-weight: bold;
+            color: #555;
+            flex-shrink: 0;
+        }
+        .edu-detail h3 { margin: 0; font-size: 1.1em; }
+        .edu-detail p { margin: 5px 0 0; color: #666; }
+
+        /* --- 4. 论文发表 (Publications) --- */
+        .pub-item { margin-bottom: 20px; }
+        .pub-title { font-weight: bold; font-size: 1.05em; color: #000; }
+        .pub-authors { color: #555; margin: 4px 0; }
+        .me { font-weight: bold; text-decoration: underline; } /* 你的名字加粗 */
+        .pub-venue { font-style: italic; color: #0066cc; }
+        .pub-links a {
+            font-size: 0.85em;
+            margin-right: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* --- 5. ❤️ 特别专区 (For Yueyue) --- */
+        .yueyue-section {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #fff0f5 0%, #fff 100%); /* 粉色渐变背景 */
+            border: 1px solid #ffccd9;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .gf-photo img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+            transition: transform 0.3s;
+        }
+        .gf-photo img:hover { transform: scale(1.05) rotate(-3deg); }
+        
+        .gf-content h3 { margin: 0 0 10px 0; color: #d63384; display: flex; align-items: center; gap: 10px; }
+        .gf-content p { color: #884466; margin-bottom: 15px; }
+        
+        .love-btn {
+            display: inline-block;
+            background: #ff69b4;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(255, 105, 180, 0.3);
+        }
+        .love-btn:hover { background: #e05297; transform: translateY(-2px); }
+
+        /* 手机适配 */
+        @media (max-width: 600px) {
+            .profile-section { flex-direction: column; text-align: center; }
+            .yueyue-section { flex-direction: column; text-align: center; }
+            .edu-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- 1. 个人简介区 -->
+    <section class="profile-section">
+        <div class="profile-img">
+            <!-- 【注意】这里需要一张你的照片，重命名为 me.jpg -->
+            <img src="images/me.jpg" alt="My Photo">
+        </div>
+        <div class="profile-info">
+            <h1>San Zhang (张三)</h1> <!-- 改名 -->
+            <div class="role">PhD Student @ XX University</div>
+            <div class="advisor">Advised by Prof. <a href="#">XXX XXX</a></div>
+            <div class="tags">
+                <span>Computer Vision</span>
+                <span>Deep Learning</span>
+                <span>AIGC</span>
+            </div>
+            <div class="social-links">
+                <a href="mailto:your_email@edu.cn"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/flyyyyypig" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fas fa-graduation-cap"></i></a> <!-- Google Scholar -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 新闻动态 -->
+    <section>
+        <h2>🔥 News</h2>
+        <ul class="news-list">
+            <li><span class="date">[2025.02]</span> One paper accepted by <strong>CVPR 2025</strong>!</li>
+            <li><span class="date">[2024.12]</span> Built my personal homepage.</li>
+        </ul>
+    </section>
+
+    <!-- 3. 教育背景 -->
+    <section>
+        <h2>🎓 Education</h2>
+        <div class="edu-item">
+            <div class="edu-year">2023 - Present</div>
+            <div class="edu-detail">
+                <h3>Ph.D. in Computer Science</h3>
+                <p>University of Science and Technology, China</p>
+            </div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-year">2019 - 2023</div>
+            <div class="edu-detail">
+                <h3>B.E. in Software Engineering</h3>
+                <p>XX University</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 论文发表 -->
+    <section>
+        <h2>📝 Publications</h2>
+        
+        <!-- 论文 1 -->
+        <div class="pub-item">
+            <div class="pub-title">Deep Learning for Something Amazing</div>
+            <div class="pub-authors">
+                <span class="me">San Zhang</span>, Author Two, Author Three, Advisor Name
+            </div>
+            <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2025</div>
+            <div class="pub-links">
+                <a href="#">[PDF]</a>
+                <a href="#">[Code]</a>
+                <a href="#">[Project]</a>
+            </div>
+        </div>
+
+        <!-- 论文 2 -->
+        <div class="pub-item">
+            <div class="pub-title">Another Great Paper Title</div>
+            <div class="pub-authors">
+                Author One, <span class="me">San Zhang</span>, Advisor Name
+            </div>
+            <div class="pub-venue">International Conference on Computer Vision (ICCV), 2023</div>
+            <div class="pub-links">
+                <a href="#">[PDF]</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ❤️ 特别专区 -->
+    <section class="yueyue-section">
+        <div class="gf-photo">
+            <!-- 【注意】这里需要一张女朋友照片，重命名为 gf.jpg -->
+            <img src="images/gf.jpg" alt="Yueyue">
+        </div>
+        <div class="gf-content">
+            <h3>The Special One <i class="fas fa-heart" style="color:#ff69b4;"></i></h3>
+            <p>除了科研，生活中最美好的灵感来源。For my lovely Yueyue.</p>
+            <!-- 这里的链接已经指向你之前做好的游戏仓库 -->
+            <a href="https://flyyyyypig.github.io/for_yueyue_games/" target="_blank" class="love-btn">
+                <i class="fas fa-gamepad"></i> Play Games for Her
+            </a>
+        </div>
+    </section>
+
+    <footer style="text-align:center; margin-top:50px; color:#999; font-size:0.9em;">
+        <p>&copy; 2025 San Zhang. Hosted on GitHub Pages.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
